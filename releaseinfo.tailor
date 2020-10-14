@@ -1,0 +1,66 @@
+#sccs>>---------------------------------------------------------------------//
+#---------------------------------------------------------------------------//
+#
+#  File, Component, Release:
+#                 releaseinfo.tailor 1.0 13-MAR-2008 10:15:21 DMSYS
+#
+#  File:      releaseinfo.tailor
+#  Revision:      1.0
+#  date:          13-MAR-2008 10:15:21
+#
+#---------------------------------------------------------------------------//
+#sccs<<---------------------------------------------------------------------//
+
+#static const char *sccsId_ReleaseInfo_tailor = "@(#) releaseinfo.tailor 1.0 13-MAR-2008 10:15:21 DMSYS";
+
+#---------------------------------------------------------------------------
+# Copyright:
+# This software is distributed only by license
+# Copyright 1996 - 2008 by Volt Delta International
+# All rights reserved
+#---------------------------------------------------------------------------
+
+#---------------------------------------------------------------------------
+# Customer
+QTEL
+#---------------------------------------------------------------------------
+
+#---------------------------------------------------------------------------
+# Project
+QTEL_DIS.1
+#---------------------------------------------------------------------------
+
+ 
+# 1 Subcomponents 
+# component     runtime level 
+ 
+# 2 Software dependencies 
+ 
+# 2.1 source levels 
+# component     source level 
+ 
+# 2.2 compile environment 
+ 
+# 2.3 operating system for runtime environment 
+(Windows XP Pro or
+Windows 2000 Pro) or
+(Windows NT 4.0 SP4 AND
+Internet Explorer 4.01 SP1)
+ 
+# 2.4 prerequisite runtime components 
+# component     runtime level 
+ 
+# 3 list of files 
+
+# 4 Compatibility issues 
+# 4.1 Other Compatibilities 
+# component     runtime level 
+ 
+# 4.2 Other Incompatibilities 
+# component     runtime level 
+ 
+# 4.3 Other compatible operating system versions 
+ 
+# 5 Restrictions, Special Conditions, Known Bugs, remarks 
+
+Tailor Release for rSESADMIN.01.62 Level => 07

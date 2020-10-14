@@ -1,0 +1,73 @@
+;//CB>-------------------------------------------------------------------
+;// 
+;//   File, Component, Release:
+;//                  specific/tailor/OsaComponent.dat 1.0 13-MAR-2008 10:15:21 DMSYS
+;// 
+;//   File:      specific/tailor/OsaComponent.dat
+;//   Revision:      1.0
+;//   Date:          13-MAR-2008 10:15:21
+;// 
+;//   DESCRIPTION:
+;//				OSA component ticket definitions
+;//     
+;//<CE-------------------------------------------------------------------
+
+;static const char * SCCS_Id_OsaComponent_dat = "@(#) specific/tailor/OsaComponent.dat 1.0 13-MAR-2008 10:15:21 DMSYS";
+;
+;
+;
+[TicketOid_1]
+;
+ComponentType = NDIS-1
+;
+Bit_1  = cross-listing searches | Suche ohne Kategorie
+Bit_2  = telephone number searches | Telefonnummernsuche
+Bit_3  = list searches | Listensuche
+Bit_4  = emergency searches | Notfallsuche
+Bit_5  = residential searches | Privatsuche
+Bit_6  = business searches | Firmensuche
+Bit_7  = government searches | Behördensuche
+Bit_8  = expanded locality searches | erweiterte Ortssuche
+Bit_9  = limited expanded locality searches | Ortssuche mit erweitertem Suchbereich
+Bit_10 = state- or provincewide searches | Landes- oder Gebietssuche
+Bit_11 = regionwide searches | regionale Suche
+Bit_12 = countrywide searches | landesweite Suche
+Bit_13 = expanded subscriber searches | erweiterte Teilnehmersuche
+Bit_14 = locality equal searches | gleicher Ortsschlüssel
+Bit_15 = house-number range searches | Hausnummernbereichsuche
+Bit_16 = exact locality searches | exakte Ortssuche
+Bit_17 = RESERVED | Reserviert
+Bit_18 = phonetic searches | phonetische Suche
+Bit_19 = sequential searches | sequentielle Suche
+Bit_20 = unlimited searches | unbegrenzte Suche
+Bit_21 = demerit searches | Näherungssuche
+Bit_22 = hide captions | wiederholte Überschrift nicht anzeigen
+Bit_23 = RESERVED | Reserviert
+Bit_24 = allow updates | Updates erlaubt
+Bit_25 = show non-listed entries | nicht im Telefonbuch aufgeführte Einträge anzeigen
+Bit_26 = show non-published entries | nicht veröffentlichte Einträge anzeigen
+Bit_27 = show secret entries (type 1) | Geheimeinträge (Typ 1) anzeigen
+Bit_28 = show secret entries (type 2) | Geheimeinträge (Typ 2) anzeigen
+Bit_29 = show secret entries (type 3) | Geheimeinträge (Typ 3) anzeigen
+Bit_30 = show new entries | neue Einträge anzeigen
+Bit_31 = show old entries | alte Einträge anzeigen
+Bit_32 = RESERVED | Reserviert
+;
+ServiceName_1  = QA:QTEL | QA:QTEL
+;
+;
+[TicketOid_16]
+;
+ComponentType = VSTATION
+;
+Bit_1  = sending SMS | SMS versenden
+Bit_2  = SMS editable | SMS editierbar
+Bit_3  = Monitoring | Beobachtung
+Bit_4  = Map and Route | Karte/Route
+Bit_5  = Information Services (SDF) | Informationsdienste (SDF)
+Bit_6  = UNDEFINED | Undefiniert
+Bit_7  = UNDEFINED | Undefiniert
+Bit_8  = UNDEFINED | Undefiniert
+;
+;
+;
