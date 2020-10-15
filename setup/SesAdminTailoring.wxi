@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+//
+//   File:      %PM%
+//   Revision:  %PR%
+//   Date:      %PUDT%
+//
+//   DESCRIPTION:
+//      Variables definition.
+//
+-->
+<Include>
+  <!-- ses, source directories and files, default values for msi package: -->
+  <?define SesAdminTailoringBuildDir="..\" ?>
+  <?define TailorDir="$(var.SesAdminTailoringBuildDir)specific\tailor\"?>
+  <?define RequiredSesAdminProductVersion="03.00"?>
+
+  <!-- sesadmin-Variables existing on the target machine:
+       SES_ADMIN_WORKDIR_PATH
+  -->
+
+</Include>

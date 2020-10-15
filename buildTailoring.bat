@@ -1,0 +1,58 @@
+@echo off
+setlocal
+
+:build
+SET BUILDYEAR=%DATE:~6,4%
+
+if exist ".\setup\sesadminversioninfo.wxi" (
+  attrib -r ".\setup\sesadminversioninfo.wxi"
+)
+
+if not exist ".\setup\sesadminversioninfo.wxi" (
+  echo ^<?xml version="1.0" encoding="Windows-1252"?^>>.\setup\sesadminversioninfo.wxi"
+  echo ^<Include^>>>.\setup\sesadminversioninfo.wxi"
+  echo   ^<!-- define voltdelta product variables:  --^>>>.\setup\sesadminversioninfo.wxi"
+  echo   ^<?define BUILDID="%BUILDID%"?^>>>.\setup\sesadminversioninfo.wxi"
+  echo   ^<?define companyName="Volt Delta International GmbH"?^>>>.\setup\sesadminversioninfo.wxi"
+  echo   ^<?define companyNameShort="Volt Delta"?^>>>.\setup\sesadminversioninfo.wxi"
+  echo   ^<?define vdiInstallDir="Volt Delta"?^>>>.\setup\sesadminversioninfo.wxi"
+  echo   ^<?define ProductName="SesAdmin"?^>>>.\setup\sesadminversioninfo.wxi"
+  echo   ^<?define ProductFullName="SesAdmin"?^>>>.\setup\sesadminversioninfo.wxi"
+  echo   ^<?define ProductVersion="03.00 %CUSTOMER%"?^>>>.\setup\sesadminversioninfo.wxi"
+  echo   ^<?define TailorVersion="%TAILORVERSION%"?^>>>.\setup\sesadminversioninfo.wxi"
+  echo ^</Include^>>>.\setup\sesadminversioninfo.wxi"
+)
+
+
+rem Visual Studio environment
+if "%VSVER%"=="" set VSVER=100
+call set VSTOOLS=%%VS%VSVER%COMNTOOLS%%
+if exist "%VSTOOLS%vsvars32.bat" (
+    @call "%VSTOOLS%vsvars32.bat"
+    goto :vsok
+)
+echo "Visual Studio ver %VSVER% not found!" 1>&2
+exit /b -1
+:vsok
+set VisualStd=%VSTOOLS%..\..
+
+if not "%1"=="" (
+    set workspace=%1
+    goto :execute
+)
+set "workspace=%cd%"
+:execute
+
+
+rem C:\WINDOWS\Microsoft.NET\Framework\v3.5\MSBuild.exe .\SesAdminTailoring.sln /t:Rebuild /p:Configuration=Release
+"devenv.com" .\SesAdminTailoring.sln  /Build "Release|Win32"
+
+goto end
+
+:error
+echo.
+echo Error: failed to build project
+echo.
+goto end
+
+:end

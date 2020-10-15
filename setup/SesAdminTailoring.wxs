@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+//
+//   File:      %PM%
+//   Revision:  %PR%
+//   Date:      %PUDT%
+//
+//   DESCRIPTION:
+//      Product definition for generation of ses tailor msi-package
+//
+-->
+<?include sesadminversioninfo.wxi?>
+<?include SesAdminTailoring.wxi?>
+
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Product Id="321EE188-0C0C-4405-9A6E-064D17657B9B"
+           Name="$(var.companyNameShort) $(var.ProductFullName) $(var.ProductVersion).$(var.TailorVersion)"
+           Language="1033"
+           Version="$(var.TailorVersion).00.$(var.BUILDID)"
+           Manufacturer="$(var.companyName)"
+           UpgradeCode="CE04DAB1-937A-4f9f-8990-7F7CF29EE049"
+           >
+
+    <!-- Definition for Summary Information Streams -->
+    <Package InstallerVersion="300" Compressed="yes" InstallScope="perMachine" />
+
+    <!-- Get current value of SESADMIN_WORKDIR_PATH system environment variable -->
+    <Property Id="SESADMIN_WORKDIR_PATH" Secure="yes">
+      <RegistrySearch Id="env.SESADMIN_WORKDIR_PATH" Root="HKLM" Key="SYSTEM\CurrentControlSet\Control\Session Manager\Environment" Name="SESADMIN_WORKDIR_PATH" Type="raw" />
+    </Property>
+    <Condition Message="This installation requires SESADMIN $(var.RequiredSesAdminProductVersion) runtime. Please install the SESADMIN $(var.RequiredSesAdminProductVersion) runtime then run this installer again."><![CDATA[Installed OR SESADMIN_WORKDIR_PATH]]></Condition>
+
+    <Media Id="1" Cabinet="sesadminTailoring.cab" EmbedCab="yes" />
+
+    <!-- Directories, Components and Files -->
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="SESADMIN_WORKDIR_PATH">
+        <Component Id="ReleaseInfo.tailor.txt" Guid="882B194E-96A7-472f-9018-53D06664B708">
+          <File Source="$(var.SesAdminTailoringBuildDir)ReleaseInfo.tailor.txt" KeyPath="yes" />
+        </Component>
+
+        <Directory Id="SESADMIN_WORKDIR_PATH.tailor" Name="tailor">
+          <Component Id="OsaComponent.dat" Guid="85946A86-5938-4997-B2F3-8EBF0FDF3D00">
+            <File Source="$(var.TailorDir)OsaComponent.dat" KeyPath="yes" />
+          </Component>
+          <Component Id="SesAdmin_tailor.ini" Guid="00E760A6-8212-4d2d-B01E-C02FED43DCD2">
+            <File Source="$(var.TailorDir)SesAdmin_tailor.ini" KeyPath="yes" />
+          </Component>
+        </Directory>
+      </Directory>
+    </Directory>
+
+    <Feature Id="SesAdminFeature" Title="$(var.ProductFullName)" Level="1">
+      <!-- . -->
+      <ComponentRef Id="ReleaseInfo.tailor.txt" />
+      <!-- tailor -->
+      <ComponentRef Id="OsaComponent.dat" />
+      <ComponentRef Id="SesAdmin_tailor.ini" />
+    </Feature>
+
+    <UIRef Id="WixUI_Common" />
+    <!-- because of the line above, add in Project compiler and linker options: -ext WixUIExtension -ext WixUtilExtension -->
+
+    <UI Id="MyWixUI_ModifyMondo">
+      <!-- im WixUI_Mondo.wxs -->
+      <Property Id="DefaultUIFont" Value="WixUI_Font_Normal" />
+      <TextStyle Id="WixUI_Font_Normal" FaceName="Tahoma" Size="8" />
+      <TextStyle Id="WixUI_Font_Bigger" FaceName="Tahoma" Size="12" />
+      <TextStyle Id="WixUI_Font_Title" FaceName="Tahoma" Size="9" Bold="yes" />
+      <!-- if dialog set for install directory available:  provide an extra property WIXUI_INSTALLDIR: -->
+      <Property Id="WIXUI_INSTALLDIR" Value="INSTALLLOCATION" />
+
+      <Property Id="ARPNOMODIFY" Value="1" />
+
+      <DialogRef Id="BrowseDlg" />
+      <DialogRef Id="DiskCostDlg" />
+      <!-- im WixUI_Mondo.wxs -->
+      <DialogRef Id="ErrorDlg" />
+      <DialogRef Id="FatalError" />
+      <DialogRef Id="FilesInUse" />
+      <DialogRef Id="MsiRMFilesInUse" />
+      <DialogRef Id="PrepareDlg" />
+      <DialogRef Id="ProgressDlg" />
+      <DialogRef Id="ResumeDlg" />
+      <DialogRef Id="UserExit" />
+
+      <!-- my dialog:-->
+      <Publish Dialog="ExitDialog" Control="Finish" Event="EndDialog" Value="Return" Order="999">1</Publish>
+      <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="LicenseAgreementDlg">1</Publish>
+
+      <!-- im WixUI_Mondo.wxs -->
+      <Publish Dialog="LicenseAgreementDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg">1</Publish>
+      <Publish Dialog="LicenseAgreementDlg" Control="Next" Event="NewDialog" Value="VerifyReadyDlg">1</Publish>
+      <!-- my dialog:-->
+      <Publish Dialog="InstallDirDlg" Control="Back" Event="NewDialog" Value="LicenseAgreementDlg">1</Publish>
+      <Publish Dialog="InstallDirDlg" Control="Next" Event="SetTargetPath" Value="[WIXUI_INSTALLDIR]" Order="1">1</Publish>
+      <Publish Dialog="InstallDirDlg" Control="Next" Event="NewDialog" Value="VerifyReadyDlg" Order="2">1</Publish>
+      <Publish Dialog="InstallDirDlg" Control="ChangeFolder" Property="_BrowseProperty" Value="[WIXUI_INSTALLDIR]" Order="1">1</Publish>
+      <Publish Dialog="InstallDirDlg" Control="ChangeFolder" Event="SpawnDialog" Value="BrowseDlg" Order="2">1</Publish>
+      <Publish Dialog="InstallDirDlg" Control="Cancel" Event="NewDialog" Value="CancelDlg">1</Publish>
+
+      <Publish Dialog="VerifyReadyDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg" Order="1">NOT Installed</Publish>
+      <Publish Dialog="VerifyReadyDlg" Control="Back" Event="NewDialog" Value="MaintenanceTypeDlg" Order="2">Installed</Publish>
+      <!-- im WixUI_Mondo.wxs -->
+      <Publish Dialog="MaintenanceWelcomeDlg" Control="Next" Event="NewDialog" Value="MaintenanceTypeDlg">1</Publish>
+      <Publish Dialog="MaintenanceTypeDlg" Control="RepairButton" Event="NewDialog" Value="VerifyReadyDlg">1</Publish>
+      <Publish Dialog="MaintenanceTypeDlg" Control="RemoveButton" Event="NewDialog" Value="VerifyReadyDlg">1</Publish>
+      <Publish Dialog="MaintenanceTypeDlg" Control="Back" Event="NewDialog" Value="MaintenanceWelcomeDlg">1</Publish>
+
+    </UI>
+
+    <WixVariable Id="WixUILicenseRtf" Value="Resources\vLicense.rtf" />
+    <WixVariable Id="WixUIBannerBmp"  Value="Resources\bannrbmp360kernel.bmp" />
+    <WixVariable Id="WixUIDialogBmp"  Value="Resources\dlgbmp360kernel.bmp" />
+
+    <!--<Binary Id="sesadmin_js" SourceFile="Scripts/sesadmin.js" />-->
+
+    <!-- set Impersonate="no" to run as CustomActions as admin -->
+    <!--<CustomAction Id="Uninstall"     Execute="deferred" Return="check" BinaryKey="sesadmin_js" JScriptCall="Uninstall" Impersonate="no" />
+
+    <InstallExecuteSequence>
+      <Custom Action="Uninstall"           After='PatchFiles'>REMOVE</Custom>
+    </InstallExecuteSequence>-->
+
+  </Product>
+</Wix>
