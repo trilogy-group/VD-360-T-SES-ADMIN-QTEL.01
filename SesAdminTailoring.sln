@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C6EAF470-1A41-4355-804A-21D721596BD1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configuration", "Configuration", "{3D81F8F4-3AA5-48E6-B890-83B4533A49D6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tailor", "tailor", "{7B2F5E3F-DE2C-4F48-85E6-59C79104FC7C}"
+	ProjectSection(SolutionItems) = preProject
+		specific\tailor\OsaComponent.dat = specific\tailor\OsaComponent.dat
+		specific\tailor\SesAdmin_tailor.ini = specific\tailor\SesAdmin_tailor.ini
+	EndProjectSection
+EndProject
+Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "SesAdminTailoring", "setup\SesAdminTailoring.wixproj", "{5935B375-5202-498A-951F-C2E8787CACFB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5935B375-5202-498A-951F-C2E8787CACFB}.Debug|x86.ActiveCfg = Debug|x86
+		{5935B375-5202-498A-951F-C2E8787CACFB}.Release|x86.ActiveCfg = Release|x86
+		{5935B375-5202-498A-951F-C2E8787CACFB}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3D81F8F4-3AA5-48E6-B890-83B4533A49D6} = {C6EAF470-1A41-4355-804A-21D721596BD1}
+		{7B2F5E3F-DE2C-4F48-85E6-59C79104FC7C} = {3D81F8F4-3AA5-48E6-B890-83B4533A49D6}
+	EndGlobalSection
+EndGlobal
