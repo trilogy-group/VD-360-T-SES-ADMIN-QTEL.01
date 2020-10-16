@@ -9,6 +9,7 @@ if exist ".\setup\sesadminversioninfo.wxi" (
 )
 
 if not exist ".\setup\sesadminversioninfo.wxi" (
+  echo Generating .\setup\sesadminversioninfo.wxi
   echo ^<?xml version="1.0" encoding="Windows-1252"?^>>.\setup\sesadminversioninfo.wxi"
   echo ^<Include^>>>.\setup\sesadminversioninfo.wxi"
   echo   ^<!-- define voltdelta product variables:  --^>>>.\setup\sesadminversioninfo.wxi"
@@ -44,8 +45,8 @@ set "workspace=%cd%"
 :execute
 
 
-rem C:\WINDOWS\Microsoft.NET\Framework\v3.5\MSBuild.exe .\SesAdminTailoring.sln /t:Rebuild /p:Configuration=Release
-"devenv.com" .\SesAdminTailoring.sln  /Build "Release|Win32"
+sete PATH=%PATH%;C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\Bin
+"devenv.com" /Rebuild "Release|x86" SesAdminTailoring.sln 
 
 goto end
 

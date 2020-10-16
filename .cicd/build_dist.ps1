@@ -57,5 +57,5 @@ DoInFolder ("$workspace") {
         exit 1
     }
 
-    CopyAll "$workspace\sesadmin\setup\bin\Release\*.msi" "$workspace\$out\"
+    CopyAll "$workspace\setup\bin\Release\*.msi" "$workspace\$out\"
 }
