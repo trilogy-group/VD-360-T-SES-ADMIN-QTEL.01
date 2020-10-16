@@ -10,8 +10,8 @@ def project = ''
 node ('voltdelta-360-eti-ci-vs2010')
 {
     IB_ScriptedPipeline (
-        module: 'ses-admin.yml',
-        artifactName: 'ses-admin.3.0',
+        module: 't-ses-admin.yml',
+        artifactName: 'ses-admin.qtel',
         credentials: credentials,
         nexusReleasesRepositoryId: nexusRelease,
         nexusSnapshotsRepositoryId: nexusSnapshots,
