@@ -16,7 +16,7 @@
   <Product Id="321EE188-0C0C-4405-9A6E-064D17657B9B"
            Name="$(var.companyNameShort) $(var.ProductFullName) $(var.ProductVersion).$(var.TailorVersion)"
            Language="1033"
-           Version="$(var.TailorVersion).00.$(var.BUILDID)"
+           Version="$(var.TailorVersion).$(var.BUILDID)"
            Manufacturer="$(var.companyName)"
            UpgradeCode="CE04DAB1-937A-4f9f-8990-7F7CF29EE049"
            >
