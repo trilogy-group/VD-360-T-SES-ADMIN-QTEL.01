@@ -13,14 +13,14 @@ if not exist ".\setup\sesadminversioninfo.wxi" (
   echo ^<?xml version="1.0" encoding="Windows-1252"?^>>.\setup\sesadminversioninfo.wxi"
   echo ^<Include^>>>.\setup\sesadminversioninfo.wxi"
   echo   ^<!-- define voltdelta product variables:  --^>>>.\setup\sesadminversioninfo.wxi"
-  echo   ^<?define BUILDID="%BUILDID%"?^>>>.\setup\sesadminversioninfo.wxi"
+  echo   ^<?define BUILDID="%BUILD_ID%"?^>>>.\setup\sesadminversioninfo.wxi"
   echo   ^<?define companyName="Volt Delta International GmbH"?^>>>.\setup\sesadminversioninfo.wxi"
   echo   ^<?define companyNameShort="Volt Delta"?^>>>.\setup\sesadminversioninfo.wxi"
   echo   ^<?define vdiInstallDir="Volt Delta"?^>>>.\setup\sesadminversioninfo.wxi"
   echo   ^<?define ProductName="SesAdmin"?^>>>.\setup\sesadminversioninfo.wxi"
   echo   ^<?define ProductFullName="SesAdmin"?^>>>.\setup\sesadminversioninfo.wxi"
-  echo   ^<?define ProductVersion="03.00 %CUSTOMER%"?^>>>.\setup\sesadminversioninfo.wxi"
-  echo   ^<?define TailorVersion="%TAILORVERSION%"?^>>>.\setup\sesadminversioninfo.wxi"
+  echo   ^<?define ProductVersion="_360BuildId% %Project%"?^>>>.\setup\sesadminversioninfo.wxi"
+  echo   ^<?define TailorVersion="%_360BuildId%"?^>>>.\setup\sesadminversioninfo.wxi"
   echo ^</Include^>>>.\setup\sesadminversioninfo.wxi"
 )
 
