@@ -45,7 +45,7 @@ set "workspace=%cd%"
 :execute
 
 
-sete PATH=%PATH%;C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\Bin
+set PATH=%PATH%;C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\Bin
 "devenv.com" /Rebuild "Release|x86" SesAdminTailoring.sln 
 
 goto end
