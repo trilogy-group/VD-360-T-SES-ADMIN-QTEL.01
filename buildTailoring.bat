@@ -18,7 +18,7 @@ if not exist ".\setup\sesadminversioninfo.wxi" (
   echo   ^<?define companyNameShort="Volt Delta"?^>>>.\setup\sesadminversioninfo.wxi"
   echo   ^<?define vdiInstallDir="Volt Delta"?^>>>.\setup\sesadminversioninfo.wxi"
   echo   ^<?define ProductName="SesAdmin"?^>>>.\setup\sesadminversioninfo.wxi"
-  echo   ^<?define ProductFullName="SesAdmin"?^>>>.\setup\sesadminversioninfo.wxi"
+  echo   ^<?define ProductFullName="SesAdmin Tailoring"?^>>>.\setup\sesadminversioninfo.wxi"
   echo   ^<?define ProductVersion="%BUILD_ID%"?^>>>.\setup\sesadminversioninfo.wxi"
   echo   ^<?define TailorVersion="%BUILD_ID%"?^>>>.\setup\sesadminversioninfo.wxi"
   echo ^</Include^>>>.\setup\sesadminversioninfo.wxi"
